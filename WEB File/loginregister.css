@@ -14,6 +14,7 @@ body{
     background: url('img/background1.jpg') no-repeat;
     background-size: cover; 
     background-position: center;
+    flex-direction: column;
 }
 
 header{
@@ -28,12 +29,76 @@ header{
     z-index: 99;
 }
 
+/* 메뉴바 */
 .logo{
-    font-size: 2em;
+    font-size: 3em;
     color: #fff;
     user-select: none;
 }
 
+.logo span{
+    display: inline-block;
+    font-weight: 900;
+    color: transparent;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    text-shadow: 0 0 0 rgb(255, 255, 255);
+}
+
+.logo span:nth-child(1) {
+    animation-name: leftDisappear;
+}
+
+.logo span:nth-child(2) {
+    animation-name: leftDisappear;
+    animation-delay: .4s;
+}
+
+.logo span:nth-child(3) {
+    animation-name: leftDisappear;
+    animation-delay: .4s;
+}
+
+.logo span:nth-child(4) {
+    animation-name: rightDisappear;
+    animation-delay: 1s;
+}
+
+.logo span:nth-child(5) {
+    animation-name: rightDisappear;
+    animation-delay: 1s;
+}
+
+.logo span:nth-child(6) {
+    animation-name: leftDisappear;
+    animation-delay: 2s;
+}
+
+.logo span:nth-child(7) {
+    animation-name: rightDisappear;
+    animation-delay: 2s;
+}
+
+.logo span:nth-child(8) {
+    animation-name: rightDisappear;
+    animation-delay: 2.4s;
+}
+
+@keyframes leftDisappear {
+    50% {
+        transform: skew(50deg) translateY(-200%);
+        text-shadow: 0 0 50px;
+        opacity: 0;
+    }
+}
+
+@keyframes rightDisappear {
+    50% {
+        transform: skew(-50deg) translateY(-200%);
+        text-shadow: 0 0 50px;
+        opacity: 0;
+    }
+}
 .navigation a{
     position: relative;
     font-size: 1.1em;
@@ -58,6 +123,8 @@ header{
 .navigation a:hover::after{
     transform: scaleX(1);
 }
+
+/* 로그인 창 */
 .navigation .btnLogin-popup{
     width: 130px;
     height: 50px;
@@ -78,7 +145,7 @@ header{
 }
 
 .wrapper{
-    position: relative;
+    position: absolute;
     width: 400px;
     height: 440px;
     background: transparent;
@@ -92,6 +159,7 @@ header{
     overflow: hidden;
     transform: scale(0);
     transition: transform .5s ease, height .2s ease;
+    z-index: 1;
 }
 
 .wrapper.active-popup{
@@ -117,6 +185,7 @@ header{
     transform: translateX(-400px);
 }
 
+/* 회원가입 창 */
 .wrapper .form-box.register{
     position: absolute;
     transition: none;
@@ -219,7 +288,7 @@ header{
     text-decoration: underline;
 }
 
-.btn{
+.btn-login, .btn-register{
     width: 100%;
     height: 45px;
     background: #162938;
@@ -249,4 +318,71 @@ header{
 
 .login-register p a:hover{
     text-decoration: underline;
+}
+
+
+/* 코인 검색창 */
+
+
+/* 코인 리스트 */
+
+.header_fixed {
+    position: relative;
+    max-height: 600px;
+    width: 85%;
+    overflow: auto;
+}
+
+.header_fixed thead th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(48, 47, 47);
+    color: #e6e7e8;
+    font-size: 15px;
+}
+
+.coinList {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.header_fixed::-webkit-scrollbar {
+    width: 10px;
+}
+
+.header_fixed::-webkit-scrollbar-track {
+    background-color: rgb(224, 223, 223);
+}
+
+.header_fixed::-webkit-scrollbar-thumb { 
+    background-color: black;
+}
+
+.header_fixed::-webkit-scrollbar-button {
+    display: none;
+}
+
+th, td {
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+tr {
+    background-color: #f8f8f8;
+}
+
+tr:hover td {
+    color: #44b478;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+td button {
+    border: none;
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: #e6e7e8;
 }
