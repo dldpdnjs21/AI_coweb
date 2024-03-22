@@ -7,7 +7,9 @@
     font-family: "Madimi One", sans-serif;
 }
 body{
+    position: relative;
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -323,6 +325,78 @@ header{
 
 /* 코인 검색창 */
 
+.coinSearch {
+    position: relative;
+    margin: 25px;
+    height: 50px;
+    left: 0;
+  }
+  
+.S-container{
+    top: 25px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+.S-container input#search{
+    width: 40px;
+    height: 40px;
+    background: #1a1a1f;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #63717f;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+.S-container input#search::-webkit-input-placeholder {
+    color: #65737e;
+}
+ .S-container input#search:-moz-placeholder {
+    color: #65737e;  
+}
+ .S-container input#search::-moz-placeholder {
+    color: #65737e;  
+}
+ .S-container input#search:-ms-input-placeholder {  
+    color: #65737e;  
+}
+ 
+.S-container .S-icon{
+    position: absolute;
+    top: 50%;
+    margin-left: 15px;
+    margin-top: 9px;
+    z-index: 1;
+    color: #8b8b8b;
+}
+
+.S-container:hover button.S-icon:hover{
+    background: #000000;
+  }
+
+.S-container input#search:hover, .S-container input#search:focus, .S-container input#search:active{
+    outline:none;
+    background: #eeeeee;
+}
+
+.S-container  input#search:focus, .S-container  input#search:active{
+    outline:none;
+    width: 300px;
+}
+.S-container:hover input#search{
+    width: 300px;
+    transition: .6s;
+}
 
 /* 코인 리스트 */
 

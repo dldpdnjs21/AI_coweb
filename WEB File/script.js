@@ -19,3 +19,12 @@ btnPopup.addEventListener('click', ()=> {
 iconClose.addEventListener('click', ()=> {
     wrapper.classList.remove('active-popup');
 });
+
+
+// 검색 키워드
+$("input").on("keyup", function(){
+    var val = $(this).val();
+    $("li").hide();
+    var temp = $("li:contains('" + val + "')");
+    $(temp).show();
+});
