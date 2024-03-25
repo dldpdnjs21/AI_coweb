@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="../css/loginregister.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 상단바 -->
+    <header>
+        <h2 class="logo"><span>C</span><span>o</span><span>w</span><span>e</span><span>b</span></h2>
+        <nav class="navigation">
+            <a href="#">HOME</a>
+            <a href="#">LIVE</a>
+            <a href="#">CONTACT</a>
+            <a href="#">ABOUT</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <!-- 로그인 & 회원가입 팝업창 -->
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form method="post" action="./login.php">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="pass" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn-login">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form method="post" action="./register.php">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="name" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" name="email"required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="pass" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn-register">Register</button>
+                <div class="login-register">
+                    <p>Already have an account?<a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- 코인 리스트 검색 -->
+    <div class="coinSearch">
+        <div class="S-container">
+            <span class="S-icon"><i class="fa fa-search"></i></span>
+            <input type="search" id="search" placeholder="Search..." />
+        </div>
+    </div>
+    <!-- 코인 리스트 -->
+    <div class="header_fixed">
+        <table class="coinList">
+            <thead>
+                <tr>
+                    <th>Coin</th>
+                    <th>Price<button id="sort-price-desc" class="sort-btn">▼</button><button id="sort-price-asc" class="sort-btn">▲</button></th>
+                    <th>Range(day)<button id="sort-range-desc" class="sort-btn">▼</button><button id="sort-range-asc" class="sort-btn">▲</button></th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>비트코인</td>
+                    <td>65,000,000 원</td>
+                    <td>-1.1%</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>이더리움</td>
+                    <td>2,500,000 원</td>
+                    <td>0.8%</td>
+                    <td>500</td>
+                </tr>
+                <tr>
+                    <td>도지코인</td>
+                    <td>700 원</td>
+                    <td>53.8%</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>라이트코인</td>
+                    <td>220,000 원</td>
+                    <td>2.5%</td>
+                    <td>300</td>
+                </tr>
+                <tr>
+                    <td>카르다노</td>
+                    <td>2,000 원</td>
+                    <td>-0.3%</td>
+                    <td>1500</td>
+                </tr>
+                <tr>
+                    <td>리플</td>
+                    <td>900 원</td>
+                    <td>0.1%</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>폴카닷</td>
+                    <td>35,000 원</td>
+                    <td>4.2%</td>
+                    <td>800</td>
+                </tr>
+                <tr>
+                    <td>체인링크</td>
+                    <td>30,000 원</td>
+                    <td>3.8%</td>
+                    <td>600</td>
+                </tr>
+                <tr>
+                    <td>스텔라루멘</td>
+                    <td>400 원</td>
+                    <td>-0.7%</td>
+                    <td>2500</td>
+                </tr>
+                <tr>
+                    <td>비트코인캐시</td>
+                    <td>700,000 원</td>
+                    <td>1.5%</td>
+                    <td>400</td>
+                </tr>
+                <tr>
+                    <td>에이다</td>
+                    <td>3,000 원</td>
+                    <td>0.9%</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>트론</td>
+                    <td>100 원</td>
+                    <td>-2.0%</td>
+                    <td>3000</td>
+                </tr>
+                <tr>
+                    <td>비트토렌트</td>
+                    <td>5 원</td>
+                    <td>0.0%</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>베이직어텐션토큰</td>
+                    <td>0.5 원</td>
+                    <td>-1.8%</td>
+                    <td>7000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <!-- 코인 차트 및 구매 판매 모달 -->
+        <div id="coinModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="chart-container">
+                    <h2>Coin Chart</h2>
+                    <canvas id="coinChart" width="400" height="300"></canvas>
+                </div>
+                <div class="trade-section">
+                    <h2>Buy / Sell Coin</h2>
+                    <form id="transactionForm">
+                        <div class="trade-input">
+                            <label for="quantity">Quantity : </label>
+                            <input type="number" id="quantity" name="quantity" min="1" required>
+                        </div>
+                        <div class="trade-input">
+                            <label for="price">Price : </label>
+                            <input type="number" id="price" name="price" min="0" step="0.01" required>
+                        </div>
+                        <div class="trade-input">
+                            <label for="total">Total : </label>
+                            <input type="text" id="total" name="total" readonly>
+                        </div>
+                        <div class="trade-input">
+                            <label for="transactionType">Transaction Type:</label>
+                            <select id="transactionType" name="transactionType" required>
+                                <option value="buy">Buy</option>
+                                <option value="sell">Sell</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-transaction">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    <script src="../js/loginPopup.js"></script>
+    <script src="../js/coinList.js"></script>
+    <script src="../js/coinChart.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

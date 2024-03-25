@@ -4,6 +4,7 @@ const registerLink = document.querySelector('.register-link');
 const btnPopup = document.querySelector('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 
+//로그인 & 회원가입 팝업창
 registerLink.addEventListener('click', ()=> {
     wrapper.classList.add('active');
 });
@@ -18,13 +19,4 @@ btnPopup.addEventListener('click', ()=> {
 
 iconClose.addEventListener('click', ()=> {
     wrapper.classList.remove('active-popup');
-});
-
-
-// 검색 키워드
-$("input").on("keyup", function(){
-    var val = $(this).val();
-    $("li").hide();
-    var temp = $("li:contains('" + val + "')");
-    $(temp).show();
 });

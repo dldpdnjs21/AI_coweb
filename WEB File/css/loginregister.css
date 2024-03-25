@@ -13,7 +13,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('img/background1.jpg') no-repeat;
+    background: url('../img/background1.jpg') no-repeat;
     background-size: cover; 
     background-position: center;
     flex-direction: column;
@@ -161,7 +161,7 @@ header{
     overflow: hidden;
     transform: scale(0);
     transition: transform .5s ease, height .2s ease;
-    z-index: 1;
+    z-index: 9999;
 }
 
 .wrapper.active-popup{
@@ -324,28 +324,24 @@ header{
 
 
 /* 코인 검색창 */
-
 .coinSearch {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    z-index: 1;
+}
+
+.S-container {
     position: relative;
-    margin: 25px;
-    height: 50px;
-    left: 0;
-  }
-  
-.S-container{
-    top: 25px;
-    vertical-align: middle;
-    white-space: nowrap;
-    position: relative;
-  }
-  
-.S-container input#search{
-    width: 40px;
+    display: inline-block;
+}
+
+.S-container input#search {
+    width: 300px;
     height: 40px;
     background: #1a1a1f;
     border: none;
     font-size: 10pt;
-    float: left;
     color: #63717f;
     padding-left: 45px;
     -webkit-border-radius: 5px;
@@ -358,42 +354,28 @@ header{
     transition: background .55s ease;
 }
 
-.S-container input#search::-webkit-input-placeholder {
-    color: #65737e;
-}
- .S-container input#search:-moz-placeholder {
-    color: #65737e;  
-}
- .S-container input#search::-moz-placeholder {
-    color: #65737e;  
-}
- .S-container input#search:-ms-input-placeholder {  
-    color: #65737e;  
-}
- 
-.S-container .S-icon{
+.S-icon {
     position: absolute;
     top: 50%;
-    margin-left: 15px;
-    margin-top: 9px;
-    z-index: 1;
-    color: #8b8b8b;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #888;
 }
 
-.S-container:hover button.S-icon:hover{
-    background: #000000;
-  }
-
-.S-container input#search:hover, .S-container input#search:focus, .S-container input#search:active{
-    outline:none;
+.S-container input#search:hover,
+.S-container input#search:focus,
+.S-container input#search:active {
+    outline: none;
     background: #eeeeee;
 }
 
-.S-container  input#search:focus, .S-container  input#search:active{
-    outline:none;
+.S-container input#search:focus,
+.S-container input#search:active {
+    outline: none;
     width: 300px;
 }
-.S-container:hover input#search{
+
+.S-container:hover input#search {
     width: 300px;
     transition: .6s;
 }
@@ -401,10 +383,14 @@ header{
 /* 코인 리스트 */
 
 .header_fixed {
-    position: relative;
-    max-height: 600px;
-    width: 85%;
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 90%;
+    max-height: 60%;
     overflow: auto;
+    z-index: 1;
+    overflow-x: hidden;
 }
 
 .header_fixed thead th {
@@ -459,4 +445,108 @@ td button {
     border-radius: 20px;
     background-color: black;
     color: #e6e7e8;
+}
+
+/* 검색창 값 == 코인명 */
+.coinList tbody tr.highlight {
+    background-color: #b0c4de;
+}
+
+/*코인 거래창*/
+.coinList {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.coinSearch {
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.transaction-container {
+    width: 300px;
+}
+
+/* 거래창 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 80%;
+    max-width: 1300px;
+    max-height: 90vh;
+    z-index: 99999;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chart-container,
+.trade-section {
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.trade-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    width: 80%;
+}
+.trade-input input {
+    display: none;
+}
+.trade-input label {
+    display: inline-block;
+    width: 120px;
+}
+
+.trade-input input[type="number"] {
+    display: block;
+    width: calc(100% + 30px);
+    margin-left: 10px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.trade-input input[type="number"]::-webkit-inner-spin-button,
+.trade-input input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: inner-spin-button;
+    margin-left: -30px;
 }
