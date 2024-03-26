@@ -391,6 +391,7 @@ header{
     overflow: auto;
     z-index: 1;
     overflow-x: hidden;
+    table-layout: fixed;
 }
 
 .header_fixed thead th {
@@ -404,6 +405,7 @@ header{
 .coinList {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .header_fixed::-webkit-scrollbar {
