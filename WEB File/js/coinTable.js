@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
     const apiUrls = {
         marketAll: "https://api.upbit.com/v1/market/all?isDetails=true",
-        ticker: "https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-XRP",
+        ticker: "https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-XRP,KRW-STX",
     };
 
-    // 데이터를 가져와서 화면을 업데이트하는 함수를 주기적으로 호출
-    setInterval(fetchAndDisplayData, 1000); // 1초마다 업데이트
+    setInterval(fetchAndDisplayData, 500);
 
     // 초기화
     fetchAndDisplayData();
@@ -14,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fetchMarketData()
             .then(data => {
                 console.log("Market All Data:", data);
-                displayMarketAllData(data);
+                // displayMarketAllData(data);
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation for marketAll:', error);
@@ -50,52 +49,34 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
-    // function displayMarketAllData(data) {
-    //     const tbody = document.querySelector('.coinList tbody');
-    //
-    //     tbody.innerHTML = '';
-    //
-    //     data.forEach(coin => {
-    //         if (coin.market === 'KRW-XRP' || coin.market === 'KRW-ETH' || coin.market === 'KRW-BTC') {
-    //             const newRow = document.createElement('tr');
-    //             newRow.innerHTML = `
-    //                 <td>${coin.korean_name || 'N/A'}</td>
-    //                 <td>${formatPrice(coin.trade_price)}</td>
-    //                 <td>${formatPercent(coin.signed_change_rate)}</td>
-    //                 <td>${formatPrice(coin.acc_trade_price)}</td>
-    //             `;
-    //             tbody.appendChild(newRow);
-    //         }
-    //     });
-    // }
-
     function displayTickerData(data) {
         console.log("Ticker Data Received:", data);
 
         data.forEach(coin => {
             const tickerTable = document.querySelector('.coinList');
 
-            if (tickerTable && (coin.market === 'KRW-BTC' || coin.market === 'KRW-ETH' || coin.market === 'KRW-XRP')) {
+            if (tickerTable && (coin.market === 'KRW-BTC' || coin.market === 'KRW-ETH' || coin.market === 'KRW-XRP' || coin.market === 'KRW-STX')) {
                 console.log("Coin Data:", coin);
                 const coinElement = tickerTable.querySelector(`#${coin.market}`);
 
                 if (!coinElement) {
                     const newRow = document.createElement('tr');
                     newRow.id = coin.market;
+
                     newRow.innerHTML = `
-                        <td>${coin.market}</td>
-                        <td>${formatPrice(coin.trade_price)}</td>
-                        <td>${formatPercent(coin.signed_change_rate)}</td>
-                        <td>${formatPrice(coin.acc_trade_price)}</td>
-                    `;
+                    <td>${coin.market}</td>
+                    <td>${formatPrice(coin.trade_price)}</td>
+                    <td>${formatPercent(coin.signed_change_rate)}</td>
+                    <td>${formatPrice(coin.acc_trade_price)}</td>
+                `;
                     tickerTable.querySelector('tbody').appendChild(newRow);
                 } else {
                     coinElement.innerHTML = `
-                        <td>${coin.market}</td>
-                        <td>${formatPrice(coin.trade_price)}</td>
-                        <td>${formatPercent(coin.signed_change_rate)}</td>
-                        <td>${formatPrice(coin.acc_trade_price)}</td>
-                    `;
+                    <td>${coin.market}</td>
+                    <td>${formatPrice(coin.trade_price)}</td>
+                    <td>${formatPercent(coin.signed_change_rate)}</td>
+                    <td>${formatPrice(coin.acc_trade_price)}</td>
+                `;
                 }
             } else {
                 console.error("Ticker Table Element not found.");
@@ -108,14 +89,14 @@ document.addEventListener("DOMContentLoaded", function() {
         if (price !== undefined && price !== null) {
             return price.toLocaleString();
         } else {
-            return "N/A";
+            return "Null";
         }
     }
 
     // 퍼센트를 형식화하는 함수
     function formatPercent(percent) {
         if (percent !== undefined && percent !== null) {
-            return percent.toFixed(2) + "%";
+            return (percent * 100).toFixed(2) + "%";
         } else {
             return "N/A";
         }
