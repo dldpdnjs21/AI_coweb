@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                stepSize:1000
+                                stepSize:500
                             }
                         }]
                     }

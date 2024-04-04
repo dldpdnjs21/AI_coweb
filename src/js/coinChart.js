@@ -21,4 +21,13 @@ function openModal() {
     modal.style.display = 'block';
 }
 
+const Register = document.querySelector('.login-here');
 
+Register.addEventListener('click', (event) => {
+    event.preventDefault();
+    closeModal();
+
+    const wrapper = document.querySelector('.wrapper');
+    wrapper.classList.add('active-popup');
+
+});

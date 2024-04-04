@@ -1,11 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+    <link href="https://fonts.gooleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <title>Coweb portfolio</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+<div class="wrap">
+    <div class="intro_bg">
+        <div class="header">
+            <h2 class="logo"><span>C</span><span>o</span><span>w</span><span>e</span><span>b</span></h2>
+            <ul class="nav">
+                <li><a href="#"></a>HOME</li>
+                <li><a href="#"></a>TRADE</li>
+                <li><a href="#"></a>ABOUT</li>
+                <li>
+                    <a href="#"><ion-icon name="person-circle"></ion-icon>MY PAGE</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="intro_title">
+            <li>
+                <h1>Coin Trading Market</h1>
+            </li>
+            <li>
+                <p>포트폴리오용 코인거래소 개발 프로젝트입니다 </p>
+            </li>
+        </ul>
+    </div>
+    <ul class="amount">
+        <li>
+            <p>방문자 수</p>
+            <p>234124</p>
+        </li>
+        <li>
+            <p>비트코인 시세</p>
+            <p>12345</p>
+        </li>
+        <li>
+            <p>비트코인 변동률</p>
+            <p>12345</p>
+        </li>
+    </ul>
+    <!-- 코인 차트 및 구매 판매 모달 -->
+    <div class="main_text0">
+        <h1>Trade</h1>
+        <div class="contents1">원하는 코인을 거래해보세요.</div>
+        <div class="trade">
+            <div class="coinSearch">
+                <div class="S-container">
+                    <span class="S-icon"><i class="fa fa-search"></i></span>
+                    <input type="search" id="search" placeholder="Search..." />
+                </div>
+            </div>
+            <!-- 코인 리스트 -->
+            <div class="header_fixed">
+                <table class="coinList">
+                    <thead>
+                    <tr>
+                        <th>Coin</th>
+                        <th>Price<button id="sort-price-desc" class="sort-btn">▼</button><button id="sort-price-asc" class="sort-btn">▲</button></th>
+                        <th>Range(day)<button id="sort-range-desc" class="sort-btn">▼</button><button id="sort-range-asc" class="sort-btn">▲</button></th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--  API에서 받아온 데이터  -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="coinModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="chart-container">
+                    <h2>Coin Chart</h2>
+                    <canvas id="candle-chart" width="400" height="300"></canvas>
+                </div>
+                <div class="trade-section">
+                    <h2>Buy / Sell Coin</h2>
+                    <div class="coin-info">
+                        <div class="info-item">
+                            <p>Price : </p>
+                            <p id="current-price"></p>
+                        </div>
+                        <div class="info-item">
+                            <p>Range(day) : </p>
+                            <p id="change-rate"></p>
+                        </div>
+                    </div>
+                    <form id="transactionForm">
+                        <div class="trade-input">
+                            <label for="quantity">주문수량 : </label>
+                            <input type="number" id="quantity" name="quantity" min="1" required>
+                        </div>
+                        <div class="trade-input">
+                            <label for="price">매수가격 : </label>
+                            <input type="number" id="price" name="price" min="0" step="0.01" required>
+                        </div>
+                        <div class="trade-input">
+                            <label for="total">주문총액 : </label>
+                            <input type="text" id="total" name="total" readonly>
+                        </div>
+                        <div class="trade-input">
+                            <label for="transactionType">Transaction Type:</label>
+                            <select id="transactionType" name="transactionType" required>
+                                <option value="buy">Buy</option>
+                                <option value="sell">Sell</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-transaction">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="main_text1">
+        <h1>ABOUT</h1>
+        <div class="contents1">안전하고 투명한 시스템으로 빠르고 편리한 거래 환경을 제공합니다.</div>
+        <ul class="icons">
+            <li>
+                <div class="icon_img">
+                    <img src="../svg/logo-bitcoin.svg" width="100" height="105">
+                </div>
+                <div class="contents1_bold">엄선된 가상자산</div>
+                <div class="contents2">
+                    코웹은 가치를 인정받은 가상자산들을
+                    엄선하여 상장합니다.
+                </div>
+                <div class="more">
+                    MORE
+                </div>
+            </li>
+
+            <li>
+                <div class="icon_img">
+                    <img src="../svg/bar-chart.svg" width="100" height="105">
+                </div>
+                <div class="contents1_bold">투명한 운영</div>
+                <div class="contents2">
+                    코웹은 고객 투자 자산을 안전하게
+                    보호하고 있습니다.
+                </div>
+                <div class="more">
+                    MORE
+                </div>
+            </li>
+
+            <li>
+                <div class="icon_img">
+                    <img src="../svg/tv.svg" width="100" height="105">
+                </div>
+                <div class="contents1_bold">365일 24시간 고객지원</div>
+                <div class="contents2">
+                    코웹은 오프라인 고객센터를 통해
+                    365일 24시간 고객을 응대합니다.
+                </div>
+                <div class="more">
+                    MORE
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="footer">
+        <div>Coweb</div>
+        <div>
+            Dev. 김동해, 이규민, 이예원 <br>
+            Tel. 02 - 123 -3456 <br>
+            COPYRIGHT 2024. ALL RIGHT RESERVED.
+        </div>
+    </div>
+</div>
+<script src="../js/loginPopup.js"></script>
+<script src="../js/coinList.js"></script>
+<script src="../js/coinChart.js"></script>
+<script src="../js/coinChart2.js"></script>
+<script src="../js/coinTable.js"></script>
 </body>
 </html>
