@@ -15,8 +15,8 @@ http://data.krx.co.kr/ -정보데이터시스템
 '''
 import pandas as pd
 
-#df = pd.read_csv("https://raw.githubusercontent.com/donghaeK/capStone2/main/capStone2(1).csv")
-df = pd.read_csv('C:/Coin.csv' ,encoding='cp949')
+df = pd.read_csv('https://raw.githubusercontent.com/jjn3912/AI-coweb/main/src/csv/Coin.csv?token=GHSAT0AAAAAACQIYMABGTMRYKD5RKYDHQWIZQSQHLA' ,encoding='cp949')
+#df = pd.read_csv('C:/Coin.csv' ,encoding='cp949')
 dates = pd.to_datetime(df["Date"])
 print(df)
 
