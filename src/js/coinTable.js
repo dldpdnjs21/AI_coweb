@@ -84,6 +84,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+
+
+
     // 가격을 형식화하는 함수
     function formatPrice(price) {
         if (price !== undefined && price !== null) {

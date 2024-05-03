@@ -17,11 +17,11 @@
         <div class="header">
             <h2 class="logo"><span>C</span><span>o</span><span>w</span><span>e</span><span>b</span></h2>
             <ul class="nav">
-                <li><a href="#"></a>HOME</li>
                 <li><a href="#"></a>TRADE</li>
                 <li><a href="#"></a>ABOUT</li>
+                <li><a href="#"></a>MYPAGE</li>
                 <li>
-                    <a href="#"><ion-icon name="person-circle"></ion-icon>MY PAGE</a>
+                    <button class="btnLogout">Logout</button>
                 </li>
             </ul>
         </div>
@@ -33,7 +33,9 @@
                             <div class="MyTrade">
                                 <div class="MyTrade__TradeState TradeState">
                                     <div class="profile">
-                                        <img src="", width=50px, height=50px><h2>User Name</h2>
+                                        <form action="/src/php/mypage.php" method="post">
+                                            <img src="", width=50px, height=50px><h2>User Name</h2>
+                                        </form>
                                     </div>
                                     <div class="TradeState__section TradeState__section--amount">
                                         <div class="TradeAmount">

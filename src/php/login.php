@@ -27,7 +27,7 @@ if ($row['pass'] === $password) {
 ?>
     <script>
         alert("로그인에 성공하였습니다.")
-        location.href = "loginregister.html";
+        location.href = "main.html";
     </script>
 <?php
 } else {

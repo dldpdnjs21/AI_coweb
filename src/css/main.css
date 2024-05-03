@@ -25,6 +25,24 @@ h1 {
     font-weight: bold;
 }
 
+.nav .btnLogout{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    transition: .5s;
+}
+.nav .btnLogout:hover{
+    background: #fff;
+    color: green;
+}
+
 .intro_bg{
     background: url('../img/background1.jpg') repeat;
     width: 100%;
