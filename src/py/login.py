@@ -21,7 +21,7 @@ def login():
     window.mainloop()
 
 def check_data():
-    global name,money,window
+    global name,money,window,id,db
     id = user_id.get()
     pw = password.get()
     if len(str(id)) == 0 :
@@ -49,41 +49,69 @@ def check_data():
 
     else:
         msgbox.showwarning("경고","아이디나 비밀번호가 틀렸습니다 다시 확인해주세요.")
-
+    return
 def main_pro():
-    global name,money
+    global name,money,amount,main_window
     user_name = name
     main_window = Tk()
     main_window.title=("Coweb")
     main_window.geometry("800x600+1000+200")
     main_window.resizable(False,False)
+    amount = IntVar()
     ttk.Label(main_window, text=f"환영합니다 {user_name} 님").place(x = 670, y = 5)
     ttk.Label(main_window, text=f"잔액: {money} 원").place(x=670, y=20)
-    ttk.Button(main_window, text ="충전", command = charge_money).place(x=690, y=35)
+    ttk.Entry(main_window, textvariable= amount).place(x=660, y=40)
+    ttk.Button(main_window, text ="충전", command = charge_form).place(x=690, y=65)
     main_window.mainloop()
-
+# def charge_form():
+#     global char_window
+#     char_window = Tk()
+#     char_window.title = ("Charge")
+#     char_window.resizable(False,False)
+#     ttk.Label(char_window, text="충전금액 : ").grid(row=1, column=0, padx=10, pady=10)
+#     ttk.Entry(char_window, textvariable= amount).grid(row=1, column=1, padx=10, pady=10)
+#     ttk.Button(char_window, text = "충전", command = charge_money).grid(row = 2, column = 1, padx = 10, pady = 10)
+#     char_window.mainloop()
 def charge_money():
-    global amount,charge,charge_window
-    charge_window= Tk()
-    charge = StringVar()
-    charge_window.title = ("금액 충전")
-    ttk.Label(charge_window, text="충전금액: ").grid(row=0, column=0, padx=10, pady=10)
-    ttk.Entry(charge_window, textvariable= charge).grid(row=0, column=1, padx=10, pady=10)
-    ttk.Button(charge_window, text="충전", command=charge_send).grid(row=2, column=1, padx=10, pady=10)
-    charge_window.mainloop()
+    amountm = amount.get()
+    moneyset = int(amountm)
+    cursor = db.cursor()
+    sql = f"UPDATE user SET money = money + {moneyset} WHERE id = '{id}' "
+    cursor.execute(sql)
+    db.commit()
+    sql = f"SELECT * FROM user WHERE id = %s "
+    cursor.execute(sql,[id])
+    result = cursor.fetchone()
+    moneyup = result[3]
+    char_window.destroy()
+    ttk.Label(main_window, text=f"잔액: {moneyup} 원").place(x=670, y=20)
 
 
-def charge_send():
-    global money,user_id,charge_window
-    amount = charge.get()
-    curmoney = int(money)
-    print(amount)
+def buy_coin():
+    btc_cost = btc_cost.get()
+    cursor = db.cursor()
+    sql = f"UPDATE user SET money = money - {btc_cost} WHERE id = '{id}' "
+    cursor.execute(sql)
+    db.commit()
+    sql = f"SELECT * FROM user WHERE id = %s "
+    cursor.execute(sql, [id])
+    result = cursor.fetchone()
+    moneyup = result[3]
+    char_window.destroy()
+    ttk.Label(main_window, text=f"잔액: {moneyup} 원").place(x=670, y=20)
 
-    # id = user_id
-    # amount_bal = int(amount)
-    # total = curmoney + amount_bal
-    # print(id)
-    # print(amount)
+def sell_coin():
+    btc_cost = btc_cost.get()
+    cursor = db.cursor()
+    sql = f"UPDATE user SET money = money + {btc_cost} WHERE id = '{id}' "
+    cursor.execute(sql)
+    db.commit()
+    sql = f"SELECT * FROM user WHERE id = %s "
+    cursor.execute(sql, [id])
+    result = cursor.fetchone()
+    moneyup = result[3]
+    char_window.destroy()
+    ttk.Label(main_window, text=f"잔액: {moneyup} 원").place(x=670, y=20)
 
 
 login()
