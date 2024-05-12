@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@jjn3912.iptime.org" uuid="39d92254-e96b-40e7-8608-0d40ef8fbfef">
+    <data-source source="LOCAL" name="coweb" uuid="13060012-7538-4924-82cc-9e301c5df00e">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

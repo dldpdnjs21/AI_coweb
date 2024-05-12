@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <td>${coin.market}</td>
                     <td>${formatPrice(coin.trade_price)}</td>
                     <td>${formatPercent(coin.signed_change_rate)}</td>
-                    <td>${formatPrice(coin.acc_trade_price)}</td>
+                    <td>${formatPrice(coin.acc_trade_price_24h)}</td>
                 `;
                     tickerTable.querySelector('tbody').appendChild(newRow);
                 } else {
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <td>${coin.market}</td>
                     <td>${formatPrice(coin.trade_price)}</td>
                     <td>${formatPercent(coin.signed_change_rate)}</td>
-                    <td>${formatPrice(coin.acc_trade_price)}</td>
+                    <td>${formatPrice(coin.acc_trade_price_24h)}</td>
                 `;
                 }
             } else {
