@@ -23,4 +23,5 @@ n달전데이터로 그다음달 에측-> 다음달 시가 예측 -> 코인인�
 
 2024 04 30 분당 데이터호출 되는지 확인, count가 150만개가 아닌 최소200는 되야 될것 같다 라고 판단 및 pickle객체사용으로 csv,json보다 더 적은 용량과 메모리로 동작할 수 있게 설정해보려함.
 참고 https://github.com/mverleg/array_storage_benchmark, https://wikidocs.net/163288
+github에 pickle등재 및 호출 되는지 테스트
 '''

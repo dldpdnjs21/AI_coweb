@@ -10,6 +10,10 @@ http://jjn3912.iptime.org:8080/
 '''
 History
 2024 04 04 비트코인 캔들차트 1분, 60분, 1일 생성
+2024 04 07 AI 학습시킬 Api_Learning.py에 csv파일 정리 1~2번항목 (석유시세, 금가격) 까지 정리(github 개재)
+2024 04 08 학습시킬 Api_Learning.py에 csv파일 정리 3번항목
+2024 04 10 AI학습 고민중 csv데이터를 일별로 변환해야된다고 판단 후 변환중
+2024 04 12 csv Kospi추가 후 일별 변환 완료 및 딥러닝 진행
 '''
 import os
 import threading
@@ -23,7 +27,7 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 
 def candlestick_chart(ticker, interval):
-    df = pyupbit.get_ohlcv(ticker=ticker, interval=interval, count=300)
+    df = pyupbit.get_ohlcv(ticker=ticker, interval = interval, count=300)
     df.index = pd.to_datetime(df.index)
     while True:
         fig = go.Figure(
@@ -95,3 +99,6 @@ if __name__ == "__main__":
     # XRP_thread = threading.Thread(target=candlestick_chart, args=("KRW-XRP",))
     # XRP_thread.start()
     # XRP_thread.join()
+
+    #AI------------------------------------------------------------------------------
+
