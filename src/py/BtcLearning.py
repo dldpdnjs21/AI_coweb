@@ -33,17 +33,7 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 #df = pd.read_csv('https://raw.githubusercontent.com/jjn3912/AI-coweb/main/src/csv/Coin.csv?token=GHSAT0AAAAAACQIYMABPLUQDZ2H5X3WELJIZQT43EQ' ,encoding='cp949')
 #df = pd.read_csv('C:/Coin.csv', encoding='cp949')
 #print(df.shape)
-'''
-문제점
-https://wikidocs.net/173005 를 참고하여
-RNN 신경망으로 하루를 예측해보려했는데 한달데이터로 하루를 예측하는게 가능한것인가 라는생각이듬
-n달전데이터로 그다음달 에측-> 다음달 시가 예측 -> 코인인데 의미없다 판단
-또 shape호출결과 df데이터가 부족할것이라고 판단
-한달주기데이터X, 일일주기데이터로 변환 필요
-2024 04 11 (목)
-프로젝트팀에게 csv를 일별로 변환한다고 상의 후
-Coin.csv를 일별로 변환후 다시 merge진행
-'''
+
 
 # colum의 형태에 맞춰 split(), merge(), concat()
 # splited = oil_df['Date'].str.split(' ', expand=True)
@@ -135,16 +125,18 @@ Coin.csv를 일별로 변환후 다시 merge진행
 # plt.ylabel('stock price')
 # plt.legend()
 # plt.show()
-'''
-2024 04 12 딥러닝 진행
-https://chat.openai.com/c/47c7040c-570f-47e4-9ca0-406b99c5d51b을 참고하여
-ValueError: x and y must have same first dimension, but have shapes (314,) and (304,) 해결하기
-2024 04 15 코인의 하루데이터도 의미없다고 판단, 원활한 데이터처리와 캔들차트삽입을 위해 분당데이터로만 처리
-'''
 
-# df = pyupbit.get_ohlcv(ticker="KRW-BTC", interval = "minute1", to="20240430", count=2000000)
+
+# df = pyupbit.get_ohlcv(ticker="KRW-BTC", interval = "minute1", to="20240510", count=1000000)
 # print(df)
-# df.to_pickle('btc min per price.pickle')
+# df = pyupbit.get_ohlcv(ticker="KRW-BTC", interval = "minute1", to="20220614", count=1000000)
+# print(df)
+# df.to_csv(('Btcprice2.csv'))
+# df.to_pickle('Btcprice2.pickle')
+# df = pd.read_csv("Btcprice1.csv")
+# print(df)
+# df2 = pd.read_csv("Btcprice2.csv")
+# print(df2)
 # df.to_csv('btc min per price.csv')
 
 # import gzip
@@ -156,12 +148,14 @@ ValueError: x and y must have same first dimension, but have shapes (314,) and (
 #      f.write(df2.encode('utf-8'))
 
 import pandas as pd
-import gzip
+
 
 # 피클 파일에서 DataFrame 불러오기
-df2 = pd.read_pickle('btc min per price.pickle')
+df = pd.read_csv("https://raw.githubusercontent.com/jjn3912/AI-coweb/main/src/py/Btcprice2.csv")
+df2 = pd.read_csv("https://raw.githubusercontent.com/jjn3912/AI-coweb/main/src/py/Btcprice1.csv")
+#print(df,df2)
 
-# DataFrame을 gzip을 사용하여 압축하여 저장하기
-with gzip.open('btc min per price.pickle.gz', 'wb') as f:
-     df2.to_pickle(f)
+#df3 = pd.merge(df, df2, on='Date', how='outer')
+df3 = pd.concat([df,df2])
+print(df3)
 
