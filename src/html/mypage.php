@@ -51,43 +51,44 @@ mysqli_query($conn, $sql_update_user_info);
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/mypage.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!--    <script>-->
-<!--        const userId = '--><?php //echo $userId; ?>//';
-//        let Quantity = <?php //echo $quantity; ?>//;
-//        let userAssets = <?php //echo $user_assets; ?>//;
-//        let totalPurchasePrice = <?php //echo $total_purchase_price; ?>//;
-//
-//        function updateData() {
-//            fetch("https://api.upbit.com/v1/ticker?markets=KRW-BTC")
-//                .then(response => response.json())
-//                .then(data => {
-//                    const Price = data[0].trade_price; // BTC의 현재 가격
-//
-//                    // 매수금액 업데이트
-//                    const totalPurchaseAmount = (Quantity * Price).toLocaleString() + " KRW";
-//                    document.getElementById("totalPurchaseAmount").innerText = totalPurchaseAmount;
-//
-//                    // 평가손익 업데이트
-//                    const totalEvaluationAmount = ((Quantity * Price) - totalPurchasePrice).toLocaleString() + " KRW";
-//                    document.getElementById("totalEvaluationAmount").innerText = totalEvaluationAmount;
-//
-//                    // 평가금액 업데이트
-//                    const totalProfitLoss = (userAssets + (Quantity * Price) - totalPurchasePrice).toLocaleString() + " KRW";
-//                    document.getElementById("totalProfitLoss").innerText = totalProfitLoss;
-//
-//                    // 평가 수익률 업데이트
-//                    const totalProfitRate = ((((Quantity * Price) - totalPurchasePrice) / totalPurchasePrice) * 100).toFixed(2) + "%";
-//                    document.getElementById("totalProfitRate").innerText = totalProfitRate;
-//
-//                })
-//                .catch(error => console.error("Error fetching BTC price:", error));
-//        }
-//
-//        document.addEventListener("DOMContentLoaded", function() {
-//            updateData();
-//            setInterval(updateData, 1000);
-//        });
-//    </script>
+    <script>
+        const userId = '<?php echo $userId; ?>';
+        let Quantity = <?php echo $quantity; ?>;
+        let userAssets = <?php echo $user_assets; ?>;
+        let totalPurchasePrice = <?php echo $total_purchase_price; ?>;
+
+        function updateData() {
+            fetch("https://api.upbit.com/v1/ticker?markets=KRW-BTC")
+                .then(response => response.json())
+                .then(data => {
+                    const Price = data[0].trade_price; // BTC의 현재 가격
+
+                    // 매수금액 업데이트
+                    const totalPurchaseAmount = (Quantity * Price).toLocaleString() + " KRW";
+                    document.getElementById("totalPurchaseAmount").innerText = totalPurchaseAmount;
+
+                    // 평가손익 업데이트
+                    const totalEvaluationAmount = ((Quantity * Price) - totalPurchasePrice).toLocaleString() + " KRW";
+                    document.getElementById("totalEvaluationAmount").innerText = totalEvaluationAmount;
+
+                    // 평가금액 업데이트
+                    const totalProfitLoss = (userAssets + (Quantity * Price) - totalPurchasePrice).toLocaleString() + " KRW";
+                    document.getElementById("totalProfitLoss").innerText = totalProfitLoss;
+
+                    // 평가 수익률 업데이트
+                    const totalProfitRate = ((((Quantity * Price) - totalPurchasePrice) / totalPurchasePrice) * 100).toFixed(2) + "%";
+                    document.getElementById("totalProfitRate").innerText = totalProfitRate;
+
+                })
+                .catch(error => console.error("Error fetching BTC price:", error));
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            updateData();
+            setInterval(updateData, 1000);
+        });
+    </script>
+    
 </head>
 <body>
 <div class="wrap">
